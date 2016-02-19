@@ -1,16 +1,31 @@
 module.exports = function (Employee) {
-    Employee.create = function (data, cb) {
-        console.log("OVERWRITTEN CREATE METHOD");
+    Employee.on('dataSourceAttached', function (obj) {
+        var create = Employee.create;
 
-        data.image = this.storeImage();
-        console.log(data);
-        create.call(Employee, data, cb)
-    }
+        console.log('ORIGINAL CREATE METHOD: ' + JSON.stringify(create) + ',');
 
+        Employee.create = function (data, callback) {
+            //        console.log('OVERWRITTEN CREATE METHOD');
+            //        console.log('SERVER: ' + JSON.stringify(server) + ',');
+            //        console.log('SERVER.MODELS: ' + JSON.stringify(server.models) + ',');
 
-    Employee.storeImage = function (image) {
-        // TODO: parse uploaded image, save in file system and return the relative URL
+            console.log('THIS: ' + JSON.stringify(this) + ',');
+            console.log('DATA: ' + JSON.stringify(data) + ',');
+            console.log('CALLBACK: ' + JSON.stringify(callback));
 
-        return null;
-    }
+            create.call(Employee, data, function (err, models) {
+                //    console.log('---CALLBACK THIS: ' + JSON.stringify(this) + ',');
+                console.log('---CALLBACK ERR: ' + JSON.stringify(err) + ',');
+                console.log('---CALLBACK MODELS: ' + JSON.stringify(models));
+                return data;
+            });
+        };
+    });
+
+    //  MyModel.on('dataSourceAttached', function(obj){
+    //    var find = MyModel.find;
+    //    MyModel.find = function(filter, cb) {
+    //      return find.apply(this, arguments);
+    //    };
+    //  });
 };
