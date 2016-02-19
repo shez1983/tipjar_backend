@@ -19,10 +19,18 @@
       "type": "string",
       "required": true
     },
+    "image": {
+      "type": "string"
+    },
     "experience": {
       "type": "number"
     },
-    "image": {
+    "skills": {
+      "type": [
+        "string"
+      ]
+    },
+    "phoneNumber": {
       "type": "string"
     }
   },
