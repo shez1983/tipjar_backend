@@ -32,12 +32,6 @@
     "dataSource": "db",
     "public": false
   },
-  "employee": {
-    "dataSource": "onboard_postgres",
-    "public": true,
-    "$promise": {},
-    "$resolved": true
-  },
   "company": {
     "dataSource": "onboard_postgres",
     "public": true
@@ -45,5 +39,11 @@
   "contract": {
     "dataSource": "onboard_postgres",
     "public": true
+  },
+  "employee": {
+    "dataSource": "onboard_postgres",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   }
 }

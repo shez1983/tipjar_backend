@@ -1,39 +1,27 @@
 {
   "name": "employee",
-  "plural": "employees",
   "base": "PersistedModel",
-  "idInjection": true,
+  "strict": false,
+  "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
-    "name": {
+    "forename": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
       "type": "string",
       "required": true
     },
     "email": {
       "type": "string",
       "required": true
-    },
-    "password": {
-      "type": "string",
-      "required": true
-    },
-    "experience": {
-      "type": "number"
-    },
-    "image": {
-      "type": "string"
     }
   },
   "validations": [],
-  "relations": {
-    "contratcts": {
-      "type": "hasMany",
-      "model": "contract",
-      "foreignKey": "companyId"
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }
