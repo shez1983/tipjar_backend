@@ -23,5 +23,3 @@ Now you should have a local database setup and working
 - Go back to the command line and run the command ``` slc run ```
 - in the browser, navigate to localhost:3000/explorer for interactive documentation of the API
 
-
-
